@@ -71,7 +71,7 @@ public class Case04 {
 	@Test
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
-	void test03() {
+	void test03() throws Exception {
 		//「機能」プルダウンを押下
 		webDriver.findElement(By.cssSelector(".dropdown-toggle")).click();
 		//「ヘルプ」を押下
@@ -88,9 +88,12 @@ public class Case04 {
 	@Test
 	@Order(4)
 	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
-	void test04() {
+	void test04() throws Exception {
 		// 「よくある質問」を押下
 		webDriver.findElement(By.cssSelector("a[href='/lms/faq']")).click();
+		//別タブで表示
+		Object[] windowHandles = webDriver.getWindowHandles().toArray();
+		webDriver.switchTo().window((String) windowHandles[1]);
 		//画面遷移後のスクリーンショット
 		visibilityTimeout(By.tagName("h2"), 5);
 		getEvidence(new Object() {
