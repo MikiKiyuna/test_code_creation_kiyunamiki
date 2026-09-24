@@ -10,8 +10,6 @@ import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.openqa.selenium.By;
-
 
 /**
  * 結合テスト よくある質問機能
@@ -37,8 +35,16 @@ public class Case05 {
 	@Test
 	@Order(1)
 	@DisplayName("テスト01 トップページURLでアクセス")
-	void test01() {
-		// TODO ここに追加
+	void test01() throws Exception {
+		// URLに遷移
+		goTo("http://localhost:8080/lms");
+		//画面表示待ち
+		Thread.sleep(3000);
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		assertEquals("ログイン | LMS", webDriver.getTitle());
 	}
 
 	@Test
@@ -47,7 +53,7 @@ public class Case05 {
 	void test02() {
 		// TODO ここに追加
 	}
-	
+
 	@Test
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
@@ -61,13 +67,14 @@ public class Case05 {
 	void test04() {
 		// TODO ここに追加
 	}
+
 	@Test
 	@Order(5)
 	@DisplayName("テスト05 キーワード検索で該当キーワードを含む検索結果だけ表示")
 	void test05() {
 		// TODO ここに追加
 	}
-	
+
 	@Test
 	@Order(6)
 	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
