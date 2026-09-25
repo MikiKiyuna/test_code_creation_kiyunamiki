@@ -139,7 +139,7 @@ public class Case06 {
 		});
 
 		//値の取得
-		final List<WebElement> answers = webDriver.findElements(By.cssSelector("[id^='answer-h'] dt"));
+		final List<WebElement> answers = webDriver.findElements(By.cssSelector("[id^='answer-h']"));
 		String question1 = questions.get(0).getText();
 		String answer = answers.get(0).getText();
 
