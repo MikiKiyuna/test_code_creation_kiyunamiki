@@ -1,6 +1,7 @@
 package jp.co.sss.lms.ct.f03_report;
 
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -34,8 +35,16 @@ public class Case07 {
 	@Test
 	@Order(1)
 	@DisplayName("テスト01 トップページURLでアクセス")
-	void test01() {
-		// TODO ここに追加
+	void test01() throws Exception {
+		// URLに遷移
+		goTo("http://localhost:8080/lms");
+		//画面表示待ち
+		Thread.sleep(3000);
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		assertEquals("ログイン | LMS", webDriver.getTitle());
 	}
 
 	@Test
