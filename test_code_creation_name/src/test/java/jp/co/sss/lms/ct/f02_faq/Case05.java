@@ -3,6 +3,8 @@ package jp.co.sss.lms.ct.f02_faq;
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +13,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 /**
  * 結合テスト よくある質問機能
@@ -107,7 +110,19 @@ public class Case05 {
 	@Order(5)
 	@DisplayName("テスト05 キーワード検索で該当キーワードを含む検索結果だけ表示")
 	void test05() {
-		// TODO ここに追加
+		// キーワードの入力
+		webDriver.findElement(By.cssSelector("input[type='text']")).sendKeys("研修");
+		//検索ボタンを押下
+		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
+		//検索後のスクリーンショット
+		visibilityTimeout(By.cssSelector("[id^='question-h']"), 5);
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		final List<WebElement> questions = webDriver.findElements(By.cssSelector("[id^='question-h'] dt"));
+		String question1 = questions.get(0).getText();
+		String question2 = questions.get(1).getText();
 	}
 
 	@Test
