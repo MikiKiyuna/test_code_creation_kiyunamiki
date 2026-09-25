@@ -116,6 +116,7 @@ public class Case05 {
 		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
 		//検索後のスクリーンショット
 		visibilityTimeout(By.cssSelector("[id^='question-h']"), 5);
+		scrollBy("300");
 		getEvidence(new Object() {
 		});
 
@@ -135,6 +136,7 @@ public class Case05 {
 		assertEquals("", keyword);
 		//スクリーンショット
 		visibilityTimeout(By.cssSelector("[id^='question-h']"), 5);
+		scrollBy("300");
 		getEvidence(new Object() {
 		});
 
