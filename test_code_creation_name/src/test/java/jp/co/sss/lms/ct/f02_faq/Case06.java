@@ -3,6 +3,8 @@ package jp.co.sss.lms.ct.f02_faq;
 import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.List;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -11,6 +13,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 /**
  * 結合テスト よくある質問機能
@@ -108,14 +111,38 @@ public class Case06 {
 	@Order(5)
 	@DisplayName("テスト05 カテゴリ検索で該当カテゴリの検索結果だけ表示")
 	void test05() {
-		// TODO ここに追加
+		//【研修関係】を押下
+		webDriver.findElement(By.partialLinkText("【研修関係】")).click();
+		//スクリーンショット
+		visibilityTimeout(By.cssSelector("[id^='question-h']"), 5);
+		scrollBy("160");
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		final List<WebElement> questions = webDriver.findElements(By.cssSelector("[id^='question-h'] dt"));
+		String question1 = questions.get(0).getText();
+		String question2 = questions.get(1).getText();
 	}
 
 	@Test
 	@Order(6)
 	@DisplayName("テスト06 検索結果の質問をクリックしその回答を表示")
 	void test06() {
-		// TODO ここに追加
+		// Q.キャンセル料・途中退校についてを押下
+		final List<WebElement> questions = webDriver.findElements(By.cssSelector("[id^='question-h'] dt"));
+		//スクリーンショット
+		questions.get(0).click();
+		visibilityTimeout(By.cssSelector("[id^='answer-h']"), 5);
+		scrollBy("50");
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		final List<WebElement> answers = webDriver.findElements(By.cssSelector("[id^='answer-h'] dt"));
+		String question1 = questions.get(0).getText();
+		String answer = answers.get(0).getText();
+
 	}
 
 }
