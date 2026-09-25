@@ -72,21 +72,47 @@ public class Case07 {
 	@Order(3)
 	@DisplayName("テスト03 未提出の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() {
-		// TODO ここに追加
+		// 「詳細」ボタンを押下
+		webDriver.findElement(By.cssSelector("input[name='sectionId'][value='1']")).click();
+		//スクリーンショットの取得
+		visibilityTimeout(By.className("active"), 5);
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		assertEquals("セクション詳細 | LMS", webDriver.getTitle());
 	}
 
 	@Test
 	@Order(4)
 	@DisplayName("テスト04 「提出する」ボタンを押下しレポート登録画面に遷移")
 	void test04() {
-		// TODO ここに追加
+		//「日報【デモ】を提出する」ボタンを押下
+		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
+		//スクリーンショットの取得
+		visibilityTimeout(By.className("well bs-component"), 5);
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		assertEquals("レポート登録 | LMS", webDriver.getTitle());
 	}
 
 	@Test
 	@Order(5)
 	@DisplayName("テスト05 報告内容を入力して「提出する」ボタンを押下し確認ボタン名が更新される")
 	void test05() {
-		// TODO ここに追加
+		//報告内容入力
+		webDriver.findElement(By.id("content_0")).sendKeys("テスト用レポートです。");
+		//「提出する」ボタンを押下
+		webDriver.findElement(By.cssSelector("button[class='btn btn-primary']")).click();
+		//スクリーンショットの取得
+		visibilityTimeout(By.className("table"), 5);
+		getEvidence(new Object() {
+		});
+		//値の取得
+		String value = webDriver.findElement(By.cssSelector("input[type='submit']")).getAttribute("value");
+		assertEquals("提出済み日報【デモ】を確認する", value);
 	}
 
 }
