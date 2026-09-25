@@ -129,7 +129,19 @@ public class Case05 {
 	@Order(6)
 	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
 	void test06() {
-		// TODO ここに追加
+		// クリアボタンを押下
+		webDriver.findElement(By.cssSelector("input[type='button']")).click();
+		String keyword = webDriver.findElement(By.id("form")).getAttribute("value");
+		assertEquals("", keyword);
+		//スクリーンショット
+		visibilityTimeout(By.cssSelector("[id^='question-h']"), 5);
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		final List<WebElement> questions = webDriver.findElements(By.cssSelector("[id^='question-h'] dt"));
+		String question1 = questions.get(0).getText();
+		String question2 = questions.get(1).getText();
 	}
 
 }
