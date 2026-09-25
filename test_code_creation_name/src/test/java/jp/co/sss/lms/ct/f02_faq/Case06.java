@@ -71,8 +71,19 @@ public class Case06 {
 	@Test
 	@Order(3)
 	@DisplayName("テスト03 上部メニューの「ヘルプ」リンクからヘルプ画面に遷移")
-	void test03() {
-		// TODO ここに追加
+	void test03() throws Exception {
+		//「機能」プルダウンを押下
+		webDriver.findElement(By.cssSelector(".dropdown-toggle")).click();
+		//「ヘルプ」を押下
+		webDriver.findElement(By.cssSelector("a[href='/lms/help']")).click();
+		//画面遷移後のスクリーンショット
+		visibilityTimeout(By.tagName("h4"), 5);
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		assertEquals("ヘルプ | LMS", webDriver.getTitle());
+
 	}
 
 	@Test
