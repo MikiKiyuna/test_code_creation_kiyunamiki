@@ -89,8 +89,19 @@ public class Case06 {
 	@Test
 	@Order(4)
 	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
-	void test04() {
-		// TODO ここに追加
+	void test04() throws Exception {
+		// 「よくある質問」を押下
+		webDriver.findElement(By.cssSelector("a[href='/lms/faq']")).click();
+		//別タブで表示
+		Object[] windowHandles = webDriver.getWindowHandles().toArray();
+		webDriver.switchTo().window((String) windowHandles[1]);
+		//画面遷移後のスクリーンショット
+		visibilityTimeout(By.tagName("h2"), 5);
+		getEvidence(new Object() {
+		});
+
+		//値の取得
+		assertEquals("よくある質問 | LMS", webDriver.getTitle());
 	}
 
 	@Test
