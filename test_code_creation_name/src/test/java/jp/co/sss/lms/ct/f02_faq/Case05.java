@@ -124,6 +124,9 @@ public class Case05 {
 		final List<WebElement> questions = webDriver.findElements(By.cssSelector("[id^='question-h'] dt"));
 		String question1 = questions.get(0).getText();
 		String question2 = questions.get(1).getText();
+
+		assertEquals("Q.助成金書類の作成方法が分かりません", question1);
+		assertEquals("Q.研修の申し込みはどのようにすれば良いですか？", question2);
 	}
 
 	@Test
@@ -144,6 +147,9 @@ public class Case05 {
 		final List<WebElement> questions = webDriver.findElements(By.cssSelector("[id^='question-h'] dt"));
 		String question1 = questions.get(0).getText();
 		String question2 = questions.get(1).getText();
+
+		assertEquals("Q.助成金書類の作成方法が分かりません", question1);
+		assertEquals("Q.研修の申し込みはどのようにすれば良いですか？", question2);
 	}
 
 }

@@ -123,6 +123,9 @@ public class Case06 {
 		final List<WebElement> questions = webDriver.findElements(By.cssSelector("[id^='question-h'] dt"));
 		String question1 = questions.get(0).getText();
 		String question2 = questions.get(1).getText();
+
+		assertEquals("Q.キャンセル料・途中退校について", question1);
+		assertEquals("Q.研修の申し込みはどのようにすれば良いですか？", question2);
 	}
 
 	@Test
@@ -142,6 +145,8 @@ public class Case06 {
 		final List<WebElement> answers = webDriver.findElements(By.cssSelector("[id^='answer-h']"));
 		String question1 = questions.get(0).getText();
 		String answer = answers.get(0).getText();
+
+		assertEquals("A. 受講者の退職や解雇等、やむを得ない事情による途中終了に関してなど、事情をお伺いした上で、協議という形を取らせて頂きます。 弊社営業担当までご相談下さい。", answer);
 
 	}
 
