@@ -71,9 +71,9 @@ public class Case07 {
 	@Test
 	@Order(3)
 	@DisplayName("テスト03 未提出の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
-	void test03() {
+	void test03() throws Exception {
 		// 「詳細」ボタンを押下
-		webDriver.findElement(By.cssSelector("input[name='sectionId'][value='1']")).click();
+		webDriver.findElement(By.xpath("//input[name='sectionId'and value='1']/following-sibling::input[@type='submit']")).click();
 		//スクリーンショットの取得
 		visibilityTimeout(By.className("active"), 5);
 		getEvidence(new Object() {
