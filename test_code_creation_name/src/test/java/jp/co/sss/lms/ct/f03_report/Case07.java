@@ -72,8 +72,9 @@ public class Case07 {
 	@Order(3)
 	@DisplayName("テスト03 未提出の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() throws Exception {
+		scrollBy("50");
 		// 「詳細」ボタンを押下
-		webDriver.findElement(By.xpath("//form[.//input[@name='sectionId' and @value='3']]//input[@type='submit' and @value='詳細']")).click();
+		webDriver.findElement(By.xpath("//form[.//input[@name='sectionId' and @value='4']]//input[@type='submit' and @value='詳細']")).click();
 		//スクリーンショットの取得
 		visibilityTimeout(By.className("active"), 5);
 		getEvidence(new Object() {
