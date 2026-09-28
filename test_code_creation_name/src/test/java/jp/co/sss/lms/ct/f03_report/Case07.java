@@ -73,7 +73,7 @@ public class Case07 {
 	@DisplayName("テスト03 未提出の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() throws Exception {
 		// 「詳細」ボタンを押下
-		webDriver.findElement(By.xpath("//input[name='sectionId'and value='1']/following-sibling::input[@type='submit']")).click();
+		webDriver.findElement(By.cssSelector("form[action='/lms/section/detail'] input[type='submit']")).click();
 		//スクリーンショットの取得
 		visibilityTimeout(By.className("active"), 5);
 		getEvidence(new Object() {
@@ -90,7 +90,7 @@ public class Case07 {
 		//「日報【デモ】を提出する」ボタンを押下
 		webDriver.findElement(By.cssSelector("input[type='submit']")).click();
 		//スクリーンショットの取得
-		visibilityTimeout(By.className("well bs-component"), 5);
+		visibilityTimeout(By.cssSelector(".well.bs-component"), 5);
 		getEvidence(new Object() {
 		});
 
